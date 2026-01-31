@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umesh Pandey - Biodata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .right-column {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--secondary-color);
+        }
+
+        .personal-info p, .education-info p, .about-me p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .personal-info strong, .education-info strong {
+            min-width: 160px;
+            color: var(--dark-color);
+        }
+
+        .personal-info span, .education-info span {
+            color: #555;
+        }
+
+        .about-me p {
+            text-align: justify;
+            color: #555;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            height: 200px;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact & Social Styles */
+        .contact-info, .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .contact-item, .social-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--light-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover, .social-item:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-item:hover a, .social-item:hover a {
+            color: white;
+        }
+
+        .contact-item i, .social-item i {
+            font-size: 1.2rem;
+        }
+
+        .contact-item a, .social-item a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        /* Modal for Image Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .contact-info, .social-links {
+                justify-content: center;
+            }
+            
+            .personal-info p, .education-info p {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .personal-info strong, .education-info strong {
+                min-width: auto;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Umesh Pandey</h1>
+            <p class="tagline">Post Graduate & Musician</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <!-- Personal Information Card -->
+                <div class="card personal-info">
+                    <h2 class="card-title"><i class="fas fa-user-circle"></i> Personal Details</h2>
+                    <p><strong>Full Name:</strong> <span>Umesh Pandey</span></p>
+                    <p><strong>Father's Name:</strong> <span>Ramesh Chandra Pandey</span></p>
+                    <p><strong>Mother's Name:</strong> <span>Maya Devi Pandey</span></p>
+                    <p><strong>Goutra:</strong> <span>Bhardwaj</span></p>
+                    <p><strong>Date of Birth:</strong> <span>16/06/2003</span></p>
+                    <p><strong>Birth Time:</strong> <span>12:45 PM</span></p>
+                    <p><strong>Birth Place:</strong> <span>Suwasra, Madhya Pradesh</span></p>
+                    <p><strong>Living Place:</strong> <span>Suwasra, Madhya Pradesh</span></p>
+                </div>
+                
+                <!-- Contact Information Card -->
+                <div class="card contact-card pulse">
+                    <h2 class="card-title"><i class="fas fa-address-book"></i> Contact Details</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+917049569401">+91 7049569401</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:umeshpandey6296@gmail.com">Email</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Links Card -->
+                <div class="card social-card">
+                    <h2 class="card-title"><i class="fas fa-share-alt"></i> Social Links</h2>
+                    <div class="social-links">
+                        <div class="social-item">
+                            <i class="fab fa-youtube"></i>
+                            <a href="https://youtube.com/@pandeyjimusical8568?si=-qbimPePLMgpFsub" target="_blank">YouTube</a>
+                        </div>
+                        <div class="social-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/umesh-pandey-4a6b83243" target="_blank">LinkedIn</a>
+                        </div>
+                        <div class="social-item">
+                            <i class="fab fa-instagram"></i>
+                            <a href="https://instagram.com/pandeyji5393" target="_blank">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <!-- Photo Gallery Card -->
+                <div class="card gallery-card">
+                    <h2 class="card-title"><i class="fas fa-images"></i> Photo Gallery</h2>
+                    
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="openModal('Image1')">
+                            <img src="Image/IMG1.jpg" alt="Umesh Pandey Photo 1" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Image2')">
+                            <img src="Image/IMG2.jpg" alt="Umesh Pandey Photo 2" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Image3')">
+                            <img src="Image/IMG3.jpg" alt="Umesh Pandey Photo 3" onerror="this.src='https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Image4')">
+                            <img src="Image/IMG4.jpg" alt="Umesh Pandey Photo 4" onerror="this.src='https://images.unsplash.com/photo-1514222709107-a180c68d72b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Image5')">
+                            <img src="Image/IMG5.jpg" alt="Umesh Pandey Photo 4" onerror="this.src='https://images.unsplash.com/photo-1514222709107-a180c68d72b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Image6')">
+                            <img src="Image/IMG6.jpg" alt="Umesh Pandey Photo 4" onerror="this.src='https://images.unsplash.com/photo-1514222709107-a180c68d72b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Card -->
+                <div class="card education-info">
+                    <h2 class="card-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <p><strong>Graduation:</strong> <span>BCA (Bachelor of Computer Applications)</span></p>
+                    <p><strong>Post Graduation:</strong> <span>MCA (Master of Computer Applications)</span></p>
+                    <p><strong>Skills:</strong> <span>Web Development, Programming, Music</span></p>
+                </div>
+                
+                <!-- About Me Card -->
+                <div class="card about-me">
+                    <h2 class="card-title"><i class="fas fa-heart"></i> About Me & Hobbies</h2>
+                    <p>Hello! I'm Umesh Pandey, a graduate in Computer Applications currently pursuing my Master's degree. I have a keen interest in technology and software development.</p>
+                    <p>My passion lies in music, particularly in playing the keyboard. I enjoy creating melodious tunes and exploring different genres of music. Music is not just a hobby for me; it's a way to express creativity and emotions.</p>
+                    <p>I believe in balancing technical knowledge with artistic expression, which helps me approach problems with both logic and creativity. I'm always eager to learn new things and connect with like-minded individuals.</p>
+                    <p><strong>Hobby:</strong> <span>Keyboard Playing (Instrument)</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Modal -->
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage" alt="Enlarged view">
+        </div>
+        
+        <footer>
+            <p>© 2023 Umesh Pandey. All Rights Reserved.</p>
+            <p>Designed with ❤️ for my biodata presentation</p>
+        </footer>
+    </div>
+
+    <script>
+        // Image Modal Functionality
+        function openModal(imageName) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            
+            // Try to get the actual image from gallery, fallback to placeholder if not found
+            const galleryItem = document.querySelector(`[onclick="openModal('${imageName}')"] img`);
+            modalImg.src = galleryItem ? galleryItem.src : `Image/${imageName}.jpg`;
+            
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+        }
+        
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Add animation to cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
