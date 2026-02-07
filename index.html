@@ -41,7 +41,7 @@
             margin: 0 auto;
         }
 
-        
+
         .language-toggle {
             position: fixed;
             top: 20px;
@@ -191,12 +191,12 @@
             color: #555;
         }
 
-        
+
         .keep-english {
             font-family: 'Poppins', sans-serif !important;
         }
 
-        
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -228,7 +228,7 @@
             transform: scale(1.1);
         }
 
-        
+
         .contact-info,
         .social-links {
             display: flex;
@@ -272,7 +272,7 @@
             font-weight: 500;
         }
 
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -287,8 +287,8 @@
             animation: fadeIn 0.3s ease;
         }
 
-        
-        
+
+
         .modal-content {
             max-width: 90%;
             max-height: 90%;
@@ -311,7 +311,7 @@
             color: var(--secondary-color);
         }
 
-        
+
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -364,7 +364,7 @@
             }
         }
 
-        
+
         footer {
             text-align: center;
             padding: 20px;
@@ -374,6 +374,7 @@
             margin-top: 20px;
             animation: fadeIn 1s ease-out 0.8s both;
         }
+
         .signature-container {
             text-align: right;
             margin-top: 25px;
@@ -395,7 +396,7 @@
         }
 
 
-        
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
@@ -451,6 +452,7 @@
             <p class="tagline" id="tagline">सॉफ़्टवेयर इंजीनियर</p>
         </header>
 
+
         <div class="main-content">
             <div class="left-column">
                 <!-- Personal Information Card -->
@@ -471,6 +473,15 @@
                             Pradesh</span></p>
                     <p><strong id="livingPlaceLabel">Living Place:</strong> <span id="livingPlaceText">Suwasra, Madhya
                             Pradesh</span></p>
+                    <p style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #eee;">
+                        <strong id="companyLabel">Employee at :</strong>
+                        <span style="color: #e74c3c; font-weight: 500;">
+                            <img src="Image/concentrixImg.webp" alt="Concentrix"
+                                style="width: 24px; height: 24px; margin-right: 10px; border-radius: 4px;"
+                                onerror="this.style.display='none'">
+                            <span id="companyText">Concentrix</span>
+                        </span>
+                    </p>
                 </div>
 
                 <!-- Contact Information Card -->
@@ -556,6 +567,8 @@
                     <p><strong id="skillsLabel">Skills:</strong> <span class="keep-english">Coding , Music</span></p>
                 </div>
 
+
+
                 <!-- About Me Card -->
                 <div class="card about-me">
                     <h2 class="card-title"><i class="fas fa-heart"></i> <span id="aboutTitle">About Me & Hobbies</span>
@@ -594,6 +607,8 @@
         // Language data
         const translations = {
             english: {
+                companyText: "Concentrix",
+                companyLabel: "Employee at :",
                 signatureLine: '"I am who I am — without pretense."',
                 fullNameLBL: "Name :",
                 goutraLBL: "Goutra :",
@@ -628,6 +643,8 @@
                 footerDesignText: "Designed with ❤️ for my biodata presentation"
             },
             hindi: {
+                companyText: "Concentrix",
+                companyLabel: "कर्मचारी :",
                 signatureLine: '"जो हूँ वही हूँ — बिना दिखावे के"',
                 dobText: "16/06/2003",
                 fullNameLBL: "नाम :",
@@ -663,15 +680,18 @@
             }
         };
 
-        
+
         let currentLanguage = 'english';
 
         // DOM Elements
         const englishBtn = document.getElementById('englishBtn');
         const hindiBtn = document.getElementById('hindiBtn');
 
-        
+
         const translatableElements = {
+
+            companyLabel: document.getElementById('companyLabel'),
+            companyText: document.getElementById('companyText'),
             signatureLine: document.getElementById('signatureLine'),
             fullNameLBL: document.getElementById('fullNameLBL'),
             fullNameText: document.getElementById('fullNameText'),
@@ -794,10 +814,10 @@
             });
             switchLanguage('english');
 
-           
+
             document.getElementById('tagline').textContent = "Software Engineer";
 
-           
+
         });
     </script>
 </body>
